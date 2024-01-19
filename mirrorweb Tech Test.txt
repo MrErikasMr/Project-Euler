@@ -1,0 +1,258 @@
+
+
+Exercise 1:
+
+Task 1: Ramsay Begone
+I firstly tried to access the image by doing this:
+a)
+const imageElement = document.querySelector('.newImageClass');
+imageElement.style.display = 'none';
+
+b) The previous attempt did not work, so I decided to use a forEach loop instead to get all of the images:
+document.querySelectorAll('.newImageClass').forEach(image => image.style.display = 'none');
+
+Task 2: Revive the images.
+I noticed that some images had their opacity set to 0, so I set them to 1 by doing:
+
+a) document.querySelectorAll('.responsive-image.native-lazy-image.img-responsive.mw_GRImgInter').forEach(image => image.style.opacity = '1');
+My reward was the revealment of delightful looking food!
+
+
+Task 3: Namecalling Begone
+After noticing that the original recipe names had their display set to none, I made them display: inline.
+I set the subtitle display to block.
+I had some issues with the last child of the cat-title, so I checked to see if it exists, before setting display to none.
+
+
+const textContainers = document.querySelectorAll('.text-container');
+
+textContainers.forEach(textContainer => {
+  const firstCatTitle = textContainer.querySelector('.cat-titles');
+  const subtitles = textContainer.querySelector('.subtitles');
+  const secondCatTitle = textContainer.querySelector('.cat-titles:last-child'); 
+
+  firstCatTitle.style.display = 'inline';
+  subtitles.style.display = 'block';
+
+  if (secondCatTitle) {
+    secondCatTitle.style.display = 'none';
+  }
+});
+
+
+Finished code:
+//hides Gordon Ramsay
+document.querySelectorAll('.newImageClass').forEach(image => image.style.display = 'none');
+
+//shows original Images
+document.querySelectorAll('.responsive-image.native-lazy-image.img-responsive.mw_GRImgInter').forEach(image => image.style.opacity = '1');
+
+
+// shows original recipes, shows subtitles, hides profanity.
+
+const textContainers = document.querySelectorAll('.text-container');
+
+textContainers.forEach(textContainer => {
+  const firstCatTitle = textContainer.querySelector('.cat-titles');
+  const subtitles = textContainer.querySelector('.subtitles');
+  const secondCatTitle = textContainer.querySelector('.cat-titles:last-child'); 
+
+  firstCatTitle.style.display = 'inline';
+  subtitles.style.display = 'block';
+
+  if (secondCatTitle) {
+    secondCatTitle.style.display = 'none';
+  }
+});
+
+Google Chrome
+Version 120.0.6099.217 (Official Build) (64-bit)
+
+
+
+
+Exercise 2:
+
+// This script clicks the "Load More" button on the webpage https://www.smallbusinesscommissioner.gov.uk/blog/
+
+
+await page.goto('https://www.smallbusinesscommissioner.gov.uk/blog/'); // navigates to the website
+
+
+const requests = []; // Array to store GET requests
+
+// prepares to track get requests
+  page.on('request', request => {
+    if (request.method() === 'GET') {
+      requests.push(request.url());
+    }
+  }); 
+
+//clicks Load More button repeatedly. If button is no longer found, breaks the loop
+while (true) {
+  try {
+    await page.waitForSelector('div.search-group-home button');
+    await page.evaluate(() => {
+      document.querySelector('div.search-group-home button').click();
+    });
+  } catch (error) {
+    console.log('Load more button not found, stopping the loop.');
+    break;
+  }
+}
+
+// logs GET requests.
+console.log('GET requests:', requests);
+
+
+
+
+
+
+Exercise 3:
+
+
+
+await page.goto('https://climateaction.unfccc.int/');
+
+
+const requests = []; //creates an empty array to store GET request URLs.
+ page.on('request', request => {
+    if (request.method() === 'GET') {
+      requests.push(request.url());
+      console.log(request);
+    }
+  });
+
+ let lastGetRequestTime = Date.now();
+let hasGetRequests = false;
+
+page.on('request', (request) => {
+  if (request.method() === 'GET') {
+    lastGetRequestTime = Date.now();
+    hasGetRequests = true;
+    // Additional handling for the GET request if needed
+  }
+});
+
+// Start a loop to check every second
+const interval = setInterval(() => {
+  const currentTime = Date.now();
+  const timeDifference = currentTime - lastGetRequestTime;
+
+  if (timeDifference >= 10000) {
+    console.log('No GET requests were made in the past 20 seconds.');
+    hasGetRequests = false;
+  } else {
+    console.log('GET requests were made in the past 20 seconds.');
+    hasGetRequests = true;
+  }
+
+  // Check if hasGetRequests is false, and stop the loop if true
+  if (!hasGetRequests) {
+    clearInterval(interval);
+    console.log('Script execution stopped.');
+    requests.splice(0,lengthToMinus);
+    console.log('GET requests:', requests);
+
+  }
+}, 1000);
+
+
+
+
+await page.waitForSelector('#modalContainer > div > div > p.buttons > button.button-accept');
+    await page.evaluate(() => {
+      document.querySelector('#modalContainer > div > div > p.buttons > button.button-accept').click();
+    });
+  
+
+
+
+
+
+
+await page.waitForTimeout(2000);
+
+
+const numberOfCountries = await page.evaluate(() => {
+  return document.querySelector('#mainContent > div.map-area > div.map-filters > div:nth-child(2) > details > div:nth-child(2) > details > ul').children.length;
+});
+
+
+
+
+
+
+
+
+
+await page.evaluate(() => {
+  document.querySelector('#mainContent > div.map-area > div.map-filters > div:nth-child(2) > details > div:nth-child(2) > details > summary > span').click();
+
+});
+
+ let selectors = [];
+
+
+for (let i = 1; i < (numberOfCountries + 2); i++){
+
+  selectors[i] = `#mainContent > div.map-area > div.map-filters > div:nth-child(2) > details > div:nth-child(2) > details > ul > li:nth-child(${i}) > label`;
+
+}
+await page.waitForTimeout(2000); // Waits for 2 seconds
+
+
+// for (let i = 1; i < (numberOfCountries + 2); i++) {
+//   console.log(i);
+//   await page.evaluate((index, selectors) => {
+//     document.querySelector(selectors[index]).click();
+//   }, i, selectors);
+
+//   await page.evaluate((index, selectors) => {
+//     document.querySelector(selectors[index]).click();
+//   }, i, selectors);
+
+//   await page.waitForTimeout(2000);
+
+ 
+// }
+counter = 0;
+
+function getArrayLength(requests) {
+  return requests.length;
+}
+const lengthToMinus = getArrayLength(requests);
+
+async function clickOnAndOff(selector) {
+  await page.evaluate((selector) => {
+    document.querySelector(selector).click();
+  }, selector);
+  await page.waitForTimeout(1000);
+
+  await page.evaluate((selector) => {
+    document.querySelector(selector).click();
+  }, selector);
+  await page.waitForTimeout(1000);
+  counter += 1;
+  console.log(counter);
+}
+
+
+for (const selector of selectors.slice(1)) {
+  console.log(`Processing selector ${selector}`);
+  await clickOnAndOff(selector);
+  console.log(`Finished processing selector ${selector}`);
+}
+
+console.log('All selectors clicked and clicked off');
+
+
+
+
+
+
+
+
+
+
