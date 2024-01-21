@@ -100,6 +100,8 @@ def go_right(list):
 
     chain_list = []
     chain_multiplied = []
+    max_chain = []
+    chain_location = 0
 
   #  print(list)
     y_number = 0
@@ -121,11 +123,14 @@ def go_right(list):
 
 
         chain = list[y:y+4]
-        print(chain)
+      #  print(chain)
         result = reduce(operator.mul, chain)
-        print(result)
+       # print(result)
         chain_list.append(chain)
         chain_multiplied.append(result)
+        if chain_multiplied[-1] == max(chain_multiplied):
+            max_chain = chain
+            chain_location = y
 
 
         chain_list.append(chain)
@@ -137,19 +142,44 @@ def go_right(list):
 
         y += 1
     #print(chain_list)
-    print(max(chain_multiplied))
-    return max(chain_multiplied)
+    #print(max(chain_multiplied))
+    chain_multiplied_str = "Max Sum: ", max(chain_multiplied)
+    max_chain_str = "The Factors: ", max_chain
+    chain_location_str = "Location: ", chain_location
+
+    return "Right Chain:",chain_multiplied_str,max_chain_str,chain_location_str
 
 
-print(go_right(number_array))
+#print(go_right(number_array))
 
 
 right_chain = go_right(number_array)
+print(right_chain)
 
-#
-# def chain_multiplier(chain):
-#
-#     print(chain)
-#
-#
-# chain_multiplier(right_chain)
+
+
+
+def go_down(list):
+
+    print(list[0],list[20],list[40],list[60])
+    print(list[20],list[40],list[60],list[80])
+
+    y = 0
+    chain = []
+    chain_array = []
+
+    while True:
+        for x in range(4):
+            print(list[y])
+            y += 20
+            chain.append(list[y])
+        chain_array.append(chain)
+        chain = []
+        y -= 60
+        print(chain_array)
+
+
+    #return chain_array
+
+
+print(go_down(number_array))
