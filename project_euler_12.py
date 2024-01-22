@@ -159,27 +159,65 @@ print(right_chain)
 
 
 
-def go_down(list):
-
-    print(list[0],list[20],list[40],list[60])
-    print(list[20],list[40],list[60],list[80])
+def go_down(my_list, second_list=None, count=20):
+    if second_list is None:
+        second_list = []
 
     y = 0
-    chain = []
-    chain_array = []
+    first_list = []
 
-    while True:
-        for x in range(4):
-            print(list[y])
-            y += 20
-            chain.append(list[y])
-        chain_array.append(chain)
-        chain = []
-        y -= 60
-        print(chain_array)
+    while y < len(my_list):
+        first_list.append(my_list[y])
+        y += 20
+
+    for x in range(len(first_list)):
+        chain = first_list[x:x + 4]
+        if len(chain) < 4:
+            break
+        second_list.append(chain)
 
 
-    #return chain_array
+    if count > 1:
+        go_down(my_list[1:], second_list, count - 1)  # pass the updated second_list to the recursive call
+
+    third_list = [1]
+    fourth_list = []
+    fifth_list = []
+
+    for item in second_list:
+
+
+        result = reduce(operator.mul, item)
+       # print(item)
+        if result > max(third_list):
+            third_list.append(result)
+            fourth_list.append(item)
+            fifth_list.append(second_list.index(item))
+
+
+        print(result)
+
+
+    print(third_list)
+    print(fourth_list)
+    print(fifth_list)
+
+
+
+
+    chain_multiplied_str = "Max Sum: ", third_list[-1]
+    max_chain_str = "The Factors: ", fourth_list[-1]
+    chain_location_str = "Location: ", fifth_list[-1]
+
+    return "Up List: ", chain_multiplied_str, max_chain_str, chain_location_str
+
+
+   # return second_list
+
+# Example usage:
+
+
+
 
 
 print(go_down(number_array))
