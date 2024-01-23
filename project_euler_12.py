@@ -150,11 +150,11 @@ def go_right(list):
     return "Right Chain:",chain_multiplied_str,max_chain_str,chain_location_str
 
 
-#print(go_right(number_array))
+print(go_right(number_array))
 
 
 right_chain = go_right(number_array)
-print(right_chain)
+#print(right_chain)
 
 
 
@@ -195,12 +195,13 @@ def go_down(my_list, second_list=None, count=20):
             fifth_list.append(second_list.index(item))
 
 
-        print(result)
+      #  print(result)
 
 
-    print(third_list)
-    print(fourth_list)
-    print(fifth_list)
+    #print(third_list)
+   # print(fourth_list)
+
+   # print(fifth_list)
 
 
 
@@ -220,4 +221,72 @@ def go_down(my_list, second_list=None, count=20):
 
 
 
+
+
 print(go_down(number_array))
+
+
+
+def go_diagonal_left_to_right(list):
+    print(list)
+    print(list[0],list[21],list[42],list[63])
+    y = 0
+
+    middle_ready = True
+    right_ready = False
+    down_ready = False
+    big_chain = []
+    while True:
+        first_chain = []
+
+
+        if middle_ready:
+            if (y+63) % 20 != 0:
+               # print(list[y])
+                for x in range(4):
+
+
+                    first_chain.append(list[y + (x * 21)])
+
+              #  print(first_chain)
+                big_chain.append(first_chain)
+                y += 21
+            else:
+                middle_ready = False
+                right_ready = True
+                y = 1
+
+
+        if right_ready:
+
+            #print(list[1], list[22], list[43],list[64])
+
+            if (y+63) % 19 != 0:
+               # print(list[y])
+                for x in range(4):
+
+
+                    first_chain.append(list[y + (x * 21)])
+
+
+                print(first_chain)
+                big_chain.append(first_chain)
+                y += 21
+
+            else:
+                print(y+63)
+                print(list[19+19])
+
+
+
+
+
+
+
+
+
+
+
+
+
+print(go_diagonal_left_to_right(number_array))
