@@ -228,54 +228,48 @@ print(go_down(number_array))
 
 
 def go_diagonal_left_to_right(list):
-    print(list)
-    print(list[0],list[21],list[42],list[63])
     y = 0
+    print(list)
+    print("Hi")
+    print(list[20])
+    print(list[0],list[21],list[42])
+    big_array = []
+    array_of_y = []
+    second_array = []
 
-    middle_ready = True
-    right_ready = False
-    down_ready = False
-    big_chain = []
+    count = 0
+
     while True:
-        first_chain = []
+        print(y)
+        if y == 20 or y == 19:
+            break
+        if y % 20 == 0 and y != 0:
+            count += 1
+
+            y = count
+            if (y + 63) % 20 == 0:
+                break
+            continue
 
 
-        if middle_ready:
-            if (y+63) % 20 != 0:
-               # print(list[y])
-                for x in range(4):
+        big_array.append(list[y])
+        y+= 21
+        array_of_y.append(y)
 
 
-                    first_chain.append(list[y + (x * 21)])
+    print(big_array)
+    print(array_of_y)
 
-              #  print(first_chain)
-                big_chain.append(first_chain)
-                y += 21
-            else:
-                middle_ready = False
-                right_ready = True
-                y = 1
+    for x in range(len(big_array) -3):
+        second_array.append(big_array[x:x+4])
+
+    print(second_array)
 
 
-        if right_ready:
-
-            #print(list[1], list[22], list[43],list[64])
-
-            if (y+63) % 19 != 0:
-               # print(list[y])
-                for x in range(4):
 
 
-                    first_chain.append(list[y + (x * 21)])
 
 
-                print(first_chain)
-                big_chain.append(first_chain)
-                y += 21
-
-            else:
-                print(y+63)
-                print(list[19+19])
 
 
 
