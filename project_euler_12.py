@@ -238,17 +238,35 @@ def go_diagonal_left_to_right(list):
     second_array = []
 
     count = 0
+    y_going_down = False
 
     while True:
         print(y)
         if y == 20 or y == 19:
             break
-        if y % 20 == 0 and y != 0:
+        if y % 20 == 0 and y != 0 and not y_going_down:
             count += 1
 
             y = count
+        if y % 20 == 0 and y != 0 and y_going_down:
+            count += 20
+
+            y = count
+
+
+
+
+
+
             if (y + 63) % 20 == 0:
-                break
+                if y_going_down:
+                    break
+                y = 20
+                print(list[y])
+                print('hi')
+                count = 0
+                y_going_down = True
+
             continue
 
 
