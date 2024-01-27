@@ -229,43 +229,31 @@ print(go_down(number_array))
 
 def go_diagonal_left_to_right(list):
     y = 0
-    print(list)
-    print("Hi")
-    print(list[20])
-    print(list[0],list[21],list[42])
+
     big_array = []
     array_of_y = []
     second_array = []
 
     count = 0
-    y_going_down = False
 
     while True:
-        print(y)
+   #     print(y)
         if y == 20 or y == 19:
             break
-        if y % 20 == 0 and y != 0 and not y_going_down:
+        if y % 20 == 0 and y != 0:
             count += 1
 
             y = count
-        if y % 20 == 0 and y != 0 and y_going_down:
-            count += 20
-
-            y = count
-
-
-
-
 
 
             if (y + 63) % 20 == 0:
-                if y_going_down:
-                    break
+
+
                 y = 20
-                print(list[y])
-                print('hi')
+              #  print(list[y])
+               # print('hi')
                 count = 0
-                y_going_down = True
+                break
 
             continue
 
@@ -275,13 +263,36 @@ def go_diagonal_left_to_right(list):
         array_of_y.append(y)
 
 
-    print(big_array)
-    print(array_of_y)
+    #print(big_array)
+    #print(array_of_y)
 
     for x in range(len(big_array) -3):
         second_array.append(big_array[x:x+4])
 
-    print(second_array)
+  #  print(second_array)
+
+
+    biggest_number = 0
+    biggest_number_location = 0
+    for z in range(len(second_array)):
+
+        number = reduce(operator.mul,second_array[z])
+        if number > biggest_number:
+            biggest_number = number
+            biggest_number_location = z
+
+   # print(biggest_number)
+    #print(biggest_number_location)
+    #print(second_array[biggest_number_location])
+
+
+    chain_multiplied_str = "Max Sum: ", biggest_number
+    max_chain_str = "The Factors: ", second_array[biggest_number_location]
+    chain_location_str = "Location: ", biggest_number_location
+
+
+
+    return ("Right list: ", chain_multiplied_str, max_chain_str, chain_location_str)
 
 
 
@@ -292,13 +303,15 @@ def go_diagonal_left_to_right(list):
 
 
 
+def go_diagional_left_to_right_2(list):
 
 
-
-
+    print(list[10])
 
 
 
 
 
 print(go_diagonal_left_to_right(number_array))
+
+print(go_diagional_left_to_right_2(number_array))
