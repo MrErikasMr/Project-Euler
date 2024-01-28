@@ -306,8 +306,55 @@ def go_diagonal_left_to_right(list):
 def go_diagional_left_to_right_2(list):
 
 
-    print(list[10])
+    print(list[20],list[41],list[62],list[83])
 
+    x = 20
+
+
+    first_array = []
+    second_array = []
+    count = 0
+
+    while True:
+
+        print(count)
+        if count >= 380:
+            break
+
+        first_array.append(list[x])
+
+        if x >= 380:
+
+            count += 20
+            x = count
+            continue
+        x+= 21
+
+
+
+    first_array = first_array[:-5]
+
+    for y in range(len(first_array)-3):
+        second_array.append(first_array[y:y+4])
+
+    print(first_array)
+    print(second_array)
+
+    biggest_number = 0
+    biggest_number_location = 0
+
+    for z in range(len(second_array)):
+
+        number = reduce(operator.mul,second_array[z])
+        if number > biggest_number:
+            biggest_number = number
+            biggest_number_location = z
+
+    chain_multiplied_str = "Max Sum: ", biggest_number
+    max_chain_str = "The Factors: ", second_array[biggest_number_location]
+    chain_location_str = "Location: ", biggest_number_location
+
+    return ("Right list_2: ", chain_multiplied_str, max_chain_str, chain_location_str)
 
 
 
