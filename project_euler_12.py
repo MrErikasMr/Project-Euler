@@ -306,7 +306,7 @@ def go_diagonal_left_to_right(list):
 def go_diagional_left_to_right_2(list):
 
 
-    print(list[20],list[41],list[62],list[83])
+
 
     x = 20
 
@@ -317,7 +317,6 @@ def go_diagional_left_to_right_2(list):
 
     while True:
 
-        print(count)
         if count >= 380:
             break
 
@@ -337,8 +336,6 @@ def go_diagional_left_to_right_2(list):
     for y in range(len(first_array)-3):
         second_array.append(first_array[y:y+4])
 
-    print(first_array)
-    print(second_array)
 
     biggest_number = 0
     biggest_number_location = 0
@@ -359,6 +356,49 @@ def go_diagional_left_to_right_2(list):
 
 
 
+
+
+
 print(go_diagonal_left_to_right(number_array))
 
 print(go_diagional_left_to_right_2(number_array))
+
+
+def go_diagonal_back(list):
+
+    x = 19
+    first_list = []
+    second_list = []
+    while True:
+        if x >= 399:
+            break
+        print(list[x])
+        first_list.append(list[x])
+        x += 19
+
+
+    print(first_list)
+
+    for y in range(len(first_list) -3 ):
+        second_list.append(first_list[y:y+4])
+
+    print(second_list)
+
+    biggest_number = 0
+    biggest_number_location = 0
+
+    for z in range(len(second_list)):
+
+        number = reduce(operator.mul, second_list[z])
+        if number > biggest_number:
+            biggest_number = number
+            biggest_number_location = z
+
+    chain_multiplied_str = "Max Sum: ", biggest_number
+    max_chain_str = "The Factors: ", second_list[biggest_number_location]
+    chain_location_str = "Location: ", biggest_number_location
+
+    return ("diagonal_back_1: ", chain_multiplied_str, max_chain_str, chain_location_str)
+
+
+print(go_diagonal_back(number_array))
