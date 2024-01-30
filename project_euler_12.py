@@ -372,17 +372,14 @@ def go_diagonal_back(list):
     while True:
         if x >= 399:
             break
-        print(list[x])
         first_list.append(list[x])
         x += 19
 
 
-    print(first_list)
 
-    for y in range(len(first_list) -3 ):
+    for y in range(len(first_list) -3):
         second_list.append(first_list[y:y+4])
 
-    print(second_list)
 
     biggest_number = 0
     biggest_number_location = 0
@@ -402,3 +399,59 @@ def go_diagonal_back(list):
 
 
 print(go_diagonal_back(number_array))
+
+
+
+def go_diagonal_back2(list):
+
+    x = 18
+    first_list = []
+    second_list = []
+    count = 18
+
+    while True:
+
+        if count <= 1:
+            break
+        first_list.append(list[x])
+        if (x % 20 == 0):
+
+            for y in range(len(first_list) - 3):
+                second_list.append(first_list[y:y + 4])
+
+            first_list = []
+            count -= 1
+
+            x = count
+            continue
+        x += 19
+
+        biggest_number = 0
+        biggest_number_location = 0
+
+    for z in range(len(second_list)):
+
+        number = reduce(operator.mul, second_list[z])
+        if number > biggest_number:
+            biggest_number = number
+            biggest_number_location = z
+
+    chain_multiplied_str = "Max Sum: ", biggest_number
+    max_chain_str = "The Factors: ", second_list[biggest_number_location]
+    chain_location_str = "Location: ", biggest_number_location
+
+    return ("diagonal_back_2: ", chain_multiplied_str,max_chain_str, chain_location_str)
+
+
+print(go_diagonal_back2(number_array))
+
+
+
+def go_diagonal_back3(list):
+
+
+
+    print(list[39],list[39+19],list[39+19+19])
+
+
+print(go_diagonal_back3(number_array))
