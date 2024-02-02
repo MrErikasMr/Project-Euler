@@ -7,6 +7,10 @@
 
 import operator
 from functools import reduce
+import ast
+
+import project_euler_12
+
 
 
 
@@ -150,7 +154,6 @@ def go_right(list):
     return "Right Chain:",chain_multiplied_str,max_chain_str,chain_location_str
 
 
-print(go_right(number_array))
 
 
 right_chain = go_right(number_array)
@@ -221,9 +224,6 @@ def go_down(my_list, second_list=None, count=20):
 
 
 
-
-
-print(go_down(number_array))
 
 
 
@@ -358,12 +358,6 @@ def go_diagional_left_to_right_2(list):
 
 
 
-
-print(go_diagonal_left_to_right(number_array))
-
-print(go_diagional_left_to_right_2(number_array))
-
-
 def go_diagonal_back(list):
 
     x = 19
@@ -398,7 +392,8 @@ def go_diagonal_back(list):
     return ("diagonal_back_1: ", chain_multiplied_str, max_chain_str, chain_location_str)
 
 
-print(go_diagonal_back(number_array))
+
+
 
 
 
@@ -442,8 +437,6 @@ def go_diagonal_back2(list):
 
     return ("diagonal_back_2: ", chain_multiplied_str,max_chain_str, chain_location_str)
 
-
-print(go_diagonal_back2(number_array))
 
 
 
@@ -492,4 +485,48 @@ def go_diagonal_back3(list):
     return ("diagonal_back_2: ", chain_multiplied_str, max_chain_str, chain_location_str)
 
 
-print(go_diagonal_back3(number_array))
+
+
+
+
+
+
+
+
+
+# #
+# print(go_right(number_array))
+#
+# print(go_down(number_array))
+#
+#
+# print(go_diagonal_left_to_right(number_array))
+#
+# print(go_diagional_left_to_right_2(number_array))
+#
+#
+# print(go_diagonal_back(number_array))
+#
+#
+# print(go_diagonal_back2(number_array))
+#
+#
+# print(go_diagonal_back3(number_array))
+function_names = [go_right, go_down, go_diagonal_left_to_right, go_diagional_left_to_right_2,
+                  go_diagonal_back, go_diagonal_back2, go_diagonal_back3]
+
+functions = [func(number_array) for func in function_names]
+
+array = []
+max_number = 0
+max_index = -1
+for x in range(len(functions)):
+    #print(functions[x][1][1])
+    if functions[x][1][1] > max_number:
+        max_number = functions[x][1][1]
+        max_index = x
+print(max_number)
+print(max_index)
+
+print(functions[max_index][2][1])
+
