@@ -23,8 +23,10 @@ print()
 a = 0
 
 can_add_sum = True
-y = 2
+y = 0
 ## we're trying to create a function which counts the powers by eliminating the repeat units, and then eventually it will add 1 and times onto the next power
+
+
 
 
 while True:
@@ -34,8 +36,9 @@ while True:
         y += 1
 
         sum += y
-        if (sum %2) != 0:
-            pass
+
+
+
 
         a = sum
         can_add_sum = False
@@ -43,44 +46,44 @@ while True:
 
     if a <= 1:
         power_count = 0
+        can_add_sum = True
+
+
+
 
         print(sum, prime_array)
+
+
+        if prime_array == []:
+            prime_array = [sum]
         number_to_compare = prime_array[0]
 
         power_array = []
         z = 1
         power_count += 1
+
+
         while z < len(prime_array):
-
+            power_count += 1
             if number_to_compare == prime_array[z]:
-                power_count += 1
-
-                z += 1
+                z+= 1
 
                 if (z >= len(prime_array)):
-
-                    power_count += 2
+                    power_count += 1
                     power_array.append(power_count)
+
                     break
                 continue
+
             if number_to_compare != prime_array[z]:
-
-
-                power_count += 1
-                number_to_compare = prime_array[z]
-                if(power_count == 1):
-                    power_count += 1
                 power_array.append(power_count)
+                number_to_compare = prime_array[z]
                 power_count = 0
 
-                z += 1
 
-                if(z >= len(prime_array)):
 
-                    power_count += 2
-                    power_array.append(power_count)
-                    break
-               #
+
+
 
 
 
@@ -92,6 +95,10 @@ while True:
 
 
         print(power_array,"array")
+        if power_array == []:
+            can_add_sum = True
+            continue
+
 
         number = reduce(operator.mul, power_array)
         print(number)
