@@ -18,7 +18,7 @@ $$13 \to 40 \to 20 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1.$$</p>
 
 
 
-x = 900000
+x = 1
 has_been_1 = False
 
 big_array = []
@@ -28,12 +28,12 @@ can_x_change = False
 z = x
 
 while True:
-
+    print(z)
     if can_x_change:
         z += 1
         x = z
         can_x_change = False
-        print(z,"yo")
+        #print(z,"yo")
         if z >= 1000000:
             break
 
@@ -47,9 +47,14 @@ while True:
         big_array.append(int(x))
         if x == 1:
            # print(int(x))
-            bigger_array.append(big_array)
-            big_array = []
-            can_x_change = True
+           if len(bigger_array[1]) < len(big_array):
+                bigger_array[1] = big_array
+                bigger_array[0] = z
+
+
+                bigger_array.append(big_array)
+                big_array = []
+                can_x_change = True
             #print(bigger_array)
 
 
@@ -68,8 +73,8 @@ while True:
         continue
 
 
-print(big_array)
-print(bigger_array)
+#print(big_array)
+#print(bigger_array)
 
 longest_array = max(bigger_array,key=len)
 longest_array_index = bigger_array.index(longest_array)
