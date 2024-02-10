@@ -25,27 +25,37 @@ ending_day = 31
 
 count = 0
 
+days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
+
 
 while True:
     if starting_year == 2001:
         break
     try:
+        day = calendar.weekday(starting_year,starting_month,starting_day)
 
 
-        if (calendar.weekday(starting_year,starting_month,starting_day)  == 6) and (starting_day == 1):
+        if (day == 6) and (starting_day == 1):
             count += 1
 
-        print(calendar.weekday(starting_year,starting_month,starting_day))
+
         starting_day += 1
-        print(starting_year, "yoo")
+
+
+        print(days[day])
 
     except ValueError:
-        starting_day = 1
-        starting_month += 1
-        if starting_month >= 12:
+        if starting_month != 12:
+
+            starting_day = 1
+            starting_month += 1
+        else:
             starting_day = 1
             starting_month = 1
             starting_year += 1
+
+
+
 
 
 
