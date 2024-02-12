@@ -29,34 +29,42 @@ array1 = [
 # print(max(array[5][1:3]))
 #
 
-y = 0
-for x in range(len(array1)):
-    a = max(array1[x][y:y +2])
-
-    try:
-
-        print(array1[x][y], array1[x][y+1])
 
 
-        b = (array1[x][y], array1[x][y+1])
+x = 0
+array2 = []
+array = array1[-2]
+z = -1
+while x < len(array):
+    first_array = array[x]
+    second_array = array1[z]
+  # print(first_array)
+   # print(second_array)
 
 
-        if b[0] > b[1]:
-            print(b[0])
-            continue
-        else:
-            print(b[1])
-            y += 1
+    number1 = first_array + second_array[x]
+    number2 = first_array + second_array[x+1]
+
+    actual_number = max(number1,number2)
+    x+= 1
+    print(actual_number)
+    array2.append(actual_number)
+
+    print(array)
+    if x == len(array):
+        print("hot here")
+        array.append(array2)
+        x = 0
+        z -= 1
+        array2 = 0
 
 
-    except IndexError:
-        print(array1[x][y])
 
 
-   # print(array1[x].index(a))
 
-    y = array1[x].index(a)
 
+
+print(array2)
 
 
 
