@@ -1,5 +1,3 @@
-import numpy as np
-
 array1 = [
     [75],
     [95, 64],
@@ -18,53 +16,8 @@ array1 = [
     [4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]
 ]
 
+for i in range(len(array1) - 2, -1, -1):
+    for j in range(len(array1[i])):
+        array1[i][j] += max(array1[i + 1][j], array1[i + 1][j + 1])
 
-
-
-# for x in range(len(array)):
-#     print(max(array[x]))
-#
-
-# print(array[5])
-# print(max(array[5][1:3]))
-#
-
-
-
-x = 0
-array2 = []
-array = array1[-2]
-z = -1
-while x < len(array):
-    first_array = array[x]
-    second_array = array1[z]
-  # print(first_array)
-   # print(second_array)
-
-
-    number1 = first_array + second_array[x]
-    number2 = first_array + second_array[x+1]
-
-    actual_number = max(number1,number2)
-    x+= 1
-    print(actual_number)
-    array2.append(actual_number)
-
-    print(array)
-    if x == len(array):
-        print("hot here")
-        array.append(array2)
-        x = 0
-        z -= 1
-        array2 = 0
-
-
-
-
-
-
-
-print(array2)
-
-
-
+print(array1[0][0])
