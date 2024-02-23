@@ -1,53 +1,38 @@
-#Find the unit fraction below 1000 with the longest reciprocal
-#example: 1/3 = 0.333 (only 1 recurring digit)
-# 1/7 = 0.142857142857 (6 digit reucurring)
+example1 = 1/6
 
+example2 = 1/7
 
-print(1/7)
+#print(example2)
 
-recurring_array = []
-y_array = []
+string1 = str(example1)
+string2 = str(example2)
+length_string2 = len(string2)
+# print(string2)
+# print(string2[2:int((length_string2/2)+2)])
+# print(string2[2:8])
+# print(string2[8:14])
+has_broken = False
+y = 3
+add_y = False
+while True:
 
-y = 5
-while y < 1001:
-    string = str(1 / y)
-    if len(string) < 6:
-        y += 1
-        continue
+    if has_broken:
+        break
+    for x in range(y,len(string1)):
 
+        formula = (x - 2) + x
+        print(x)
+        print(string1[y:x])
 
-
-    for x in range(2,len(string)):
-        print(y)
-
-
-        instance1 = int((x/2) + 1)
-
-        recurring1 = string[2:instance1]
-        value = int(x/2)
-
-        recurring2 = string[value + 1: value * 2]
-
-        if recurring1 == recurring2 and len(recurring1) > 5:
-            recurring_array.append(recurring1)
-            y_array.append(y)
+        if x == (length_string2 /2) + 2:
             y += 1
-            break
-        if x == len(string) - 1:
 
-            y += 1
             break
 
+        if string1[y:x] == string1[x:formula]:
+            print("yes")
+            print(string1[y:x])
+            has_broken = True
+            print(x)
+            break
 
-
-print(y_array)
-print(recurring_array)
-print(max(recurring_array))
-
-longest = ""
-
-for z in range(len(recurring_array)):
-    if len(recurring_array[z]) > len(longest):
-        longest = recurring_array[z]
-
-print(longest)
