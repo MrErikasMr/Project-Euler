@@ -1,65 +1,38 @@
-example1 = 1/6
+def recurring_cycle_length(n):
+    # Initialize the remainder to 1
+    remainder = 1
+    # Initialize the list of remainders
+    remainders = []
+    # Loop until we find a repeating remainder or the remainder becomes 0
+    while remainder != 0 and remainder not in remainders:
+        # Add the current remainder to the list of remainders
+        remainders.append(remainder)
+        # Calculate the next remainder
+        remainder = (remainder * 10) % n
 
-example2 = 1/7
+    # If the remainder becomes 0, there is no recurring cycle
+    if remainder == 0:
+        return 0
+    # If the remainder is already in the list of remainders, we have found a recurring cycle
+    else:
+        return len(remainders) - remainders.index(remainder)
 
-#print(example2)
+# Initialize the maximum recurring cycle length and the corresponding denominator
+max_recurring_cycle_length = 0
+max_recurring_cycle_denominator = 0
 
-string2 = str(example2)
-length_string2 = len(string2)
-# print(string2)
-# print(string2[2:int((length_string2/2)+2)])
-# print(string2[2:8])
-# print(string2[8:14])
-has_broken = False
-y = 3
-add_y = False
-x = y
-big_array = []
-for x in range(1,1001):
+# Loop through all denominators less than 1000
+for d in range(2, 1000):
+    # Calculate the recurring cycle length for the current denominator
+    cycle_length = recurring_cycle_length(d)
+    # Update the maximum recurring cycle length and the corresponding denominator if necessary
+    if cycle_length > max_recurring_cycle_length:
+        max_recurring_cycle_length = cycle_length
+        max_recurring_cycle_denominator = d
 
-    string1 = str(1/x)
-    bad_strings = ["0","."]
-    can_detect_bad_strings = True
-    looking_for_pattern = False
-
-
-
-    if (len(string1)) < 7:
-        continue
-    print(string1)
-    for y in range(len(string1)):
-
-        if looking_for_pattern:
-            if first_string == string1[y]:
-                if second_string == string1[y+1]:
-                    if third_string == string1[y + 2]:
-                        big_array.append(string1)
-                        break
+# Print the result
+print(max_recurring_cycle_denominator)
 
 
-        if string1[y] in bad_strings and can_detect_bad_strings:
-            continue
-        else:
-            looking_for_pattern = True
 
-            can_detect_bad_strings = False
-            first_string = string1[y]
-            first_string_index = y
-            second_string = string1[y + 1]
-            third_string = string1[y + 2]
-            print(string1)
-
-            continue
-    print(string1)
-
-
-denominator = 1
-
-#skip the following: 0, dot, 1 until we reach a number that is bigger than 1
-#take that number, the 2nd number, and the 3rd number.
-#check if the number repeats
-#check fi the 2nd number repeats where expected
-#check if the 3rd number repeats where expected
-#if the expectation is greater than 6, record it.
-
-print(big_array)
+print(1/983)
