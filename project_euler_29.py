@@ -8,10 +8,16 @@ $n^2 + an + b$, where $|a| &lt; 1000$ and $|b| \le 1000$<br><br><div>where $|n|$
 </blockquote>
 <p>Find the product of the coefficients, $a$ and $b$, for the quadratic expression that produces the maximum number of primes for consecutive values of $n$, starting with $n = 0$.</p>"""
 
-def primes(n):
-    return n**2 + n + 41
+
+
+def primes(n,a,b,c):
+    print(n)
+    c += 1
+
+    primes(c,1,1,c)
+  #  return n**2 + a * n + b
 
 
 
 
-print(primes(40))
+primes(1,1,1,1)
