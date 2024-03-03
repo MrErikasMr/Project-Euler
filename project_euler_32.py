@@ -14,6 +14,7 @@ while sum(array) < goal:
 a = -2
 big_array = []
 array2 = []
+big_array2 = []
 while True:
     #print(array[a:])
    # print(array)
@@ -28,10 +29,18 @@ while True:
 
         a -= 1
     else:
+       # print(big_array[0])
         break
 
 
 
+
+array2 = big_array[0]
+
+while True:
+    print(array2[0])
+    var3 = array2[-2:]
+    print(var3)
 
 
 
