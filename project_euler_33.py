@@ -2,7 +2,7 @@
 total_sum = 0
 total_sum_array = []
 big_array = []
-for x in range(1,1000):
+for x in range(1,6000):
     for y in range(1,x):
         string_x = str(x)
         string_y = str(y)
