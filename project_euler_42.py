@@ -9,46 +9,32 @@ def is_prime(number):
 
 
 
-starting_string = '98'
-
-target_length = 9
-
-finishing_string = '7654321'
-
-index = 0
-start = 1
-big_array = []
-
-list1 = ['7','6','5','4','3','2','1']
+starting_number = 987654321
 
 
+while starting_number > 100000000:
+    string = ""
+    if '0' in str(starting_number) or (starting_number % 2 == 0):
+        starting_number -= 1
+        continue
+    string_number = str(starting_number)
+    for x in range(len(string_number)):
+        if (string_number[x]) not in string:
+            string += (string_number[x])
+           # print(string)
+        else:
 
-def swap_positions(list, pos1, pos2):
+            break
+    if len(string) == 9 and '0' not in string:
+        print(string)
+        if is_prime(int(string)):
 
-    list[pos1], list[pos2] = list[pos2],list[pos1]
-
-    return ''.join(list)
-
-
-
-big_array.append(987654321)
-
-first_number = -2
-second_number = -1
-while True:
-    big_array.append(int('98' + swap_positions(list1,first_number,second_number)))
-    second_number -= 1
-    print(big_array)
-
-print(big_array)
+            print(string)
+            break
 
 
-# while True:
-#     new_string = finishing_string[start:] + finishing_string[index]
-#     print(new_string)
-#     big_array.append(new_string)
-#     new_string = ""
-#
-#     index += 1
+
+    #print(starting_number)
+    starting_number -= 1
 
 
