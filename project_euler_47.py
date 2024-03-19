@@ -1,3 +1,4 @@
+from collections import Counter
 ## get all the 4-digit prime numbers
 
 #find all the prime numbers which have the same digits
@@ -58,3 +59,43 @@ while True:
     #     if
 
 print(new_array)
+
+
+new_array = sorted(new_array)
+
+print('yo')
+print(new_array)
+tuple_array = tuple(new_array)
+print(tuple_array)
+
+for x in range(len(new_array)):
+    new_array[x] = sorted(new_array[x])
+
+print(new_array)
+
+for x in range(len(new_array)):
+    new_array[x] = ''.join(new_array[x])
+
+print(new_array)
+# for x in range(len(new_array)):
+#     new_string = ''
+#     big_array = []
+#     for y in range(len(new_array[:x + 1])):
+#         string = str(new_array[y])
+#         print(sorted(string))
+#         sorted_string = sorted(string)
+#         string = ''.join(sorted_string)
+#         print(string)
+#         print(new_array[y])
+#         new_string += string
+#         big_array.append(new_string)
+#
+#         print(new_string)
+#         print(big_array)
+#
+#
+
+print(Counter(new_array))
+
+print(tuple_array)
+
