@@ -20,7 +20,7 @@ for x in range(1000,9999):
     if is_prime(x):
         prime_array.append(x)
 
-print(prime_array)
+#print(prime_array)
 
 length = len(prime_array)
 
@@ -29,7 +29,7 @@ length = len(prime_array)
 ##
 first_element = prime_array[0]
 cut_array = prime_array[0:10]
-print(cut_array)
+#print(cut_array)
 
 new_array = []
 x = 0
@@ -58,25 +58,25 @@ while True:
     # for z in range(len(prime_array[y])):
     #     if
 
-print(new_array)
+#print(new_array)
 
 
 new_array = sorted(new_array)
 
-print('yo')
-print(new_array)
+#print('yo')
+#print(new_array)
 tuple_array = tuple(new_array)
-print(tuple_array)
+#print(tuple_array)
 
 for x in range(len(new_array)):
     new_array[x] = sorted(new_array[x])
 
-print(new_array)
+#print(new_array)
 
 for x in range(len(new_array)):
     new_array[x] = ''.join(new_array[x])
 
-print(new_array)
+#print(new_array)
 # for x in range(len(new_array)):
 #     new_string = ''
 #     big_array = []
@@ -95,7 +95,32 @@ print(new_array)
 #
 #
 
-print(Counter(new_array))
+#print(Counter(new_array).items())
+
+
+dictionary1 = Counter(new_array).keys()
+
+
+index = 0
+small_array = []
+counter_index = 0
+# for keys1 in dictionary1:
+#
+#
+#     for item in keys1:
+#         print(item)
+#         if item in tuple_array[index]:
+#             print("yes")
+#         else:
+#             print("no")
+#     index += 1
 
 print(tuple_array)
+print(new_array)
 
+print(new_array[1:])
+#
+# for x in range(len(new_array)):
+#     print(new_array[x+1:])
+#     for y in range(new_array[x+1:]):
+#         if new_array[x] in new_array
