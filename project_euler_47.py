@@ -119,6 +119,34 @@ print(tuple_array)
 print(new_array)
 
 print(new_array[1:])
+
+counter1 = 0
+small_array = []
+
+big_array = []
+for x in range(len(new_array)):
+    counter1 = 0
+    first_time = True
+    for y in range(len(new_array)):
+        if new_array[x] == new_array[y]:
+            counter1 += 1
+            string1 = tuple_array[x]
+            if first_time:
+                big_array.append(string1)
+
+
+                small_array.append(counter1)
+                first_time = False
+            small_array[x] = counter1
+
+            string1 += "," + str(tuple_array[x])
+            big_array[x] = (string1)
+
+
+
+
+print(small_array)
+print(big_array)
 #
 # for x in range(len(new_array)):
 #     print(new_array[x+1:])
