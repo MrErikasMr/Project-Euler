@@ -124,12 +124,24 @@ counter1 = 0
 small_array = []
 
 big_array = []
+dict1 = {}
+dict2 = {}
+string_array = []
 for x in range(len(new_array)):
     counter1 = 0
     first_time = True
+    string_array = []
     for y in range(len(new_array)):
         if new_array[x] == new_array[y]:
+            str_dict = str(new_array[x])
             counter1 += 1
+            dict1[str_dict] = counter1
+
+            string_index = str(x)
+            string_array.append(string_index)
+            dict2[str_dict] = string_array
+
+
             string1 = tuple_array[x]
             if first_time:
                 big_array.append(string1)
@@ -145,10 +157,45 @@ for x in range(len(new_array)):
 
 
 
+print(dict1)
+
 print(small_array)
 print(big_array)
+
+print(len(small_array))
 #
 # for x in range(len(new_array)):
 #     print(new_array[x+1:])
 #     for y in range(new_array[x+1:]):
 #         if new_array[x] in new_array
+
+print(dict2)
+
+print(dict2.keys())
+
+dict3 = {}
+
+for key in dict2.keys():
+    string3 = ""
+    first_time = True
+    for x in range(len(tuple_array)):
+        if key in new_array[x]:
+            if first_time:
+                string3 = str(x)
+                dict3[str(key)] = string3
+
+                first_time = False
+            else:
+
+                print(x)
+                string3 = string3 + "," + str(x)
+                dict3[str(key)] = string3
+                print(key)
+
+
+
+
+print(dict3)
+
+for values in dict3.values():
+    print(values)
