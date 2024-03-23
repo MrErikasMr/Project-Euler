@@ -199,3 +199,53 @@ print(dict3)
 
 for values in dict3.values():
     print(values)
+
+
+new_array2 = []
+
+print(tuple_array)
+
+print(dict3)
+dict_array = []
+
+for values in dict3.values():
+    dict_array.append(values)
+    print(values)
+
+print(dict_array)
+
+dict4 = {}
+
+
+
+
+for values in dict_array:
+
+    array = []
+    x = 0
+    while x < len(values):
+        print(values[x])
+        if values[x] != "," and values[x+1] == ",":
+            array.append(int(values[x]))
+            x += 1
+            continue
+        if values[x] == ",":
+            x += 1
+            continue
+        if values[x] != "," and values[x+1] != ",":
+            array.append(int(values[x],values[x+1]))
+            x += 2
+            continue
+
+
+print(dict_array)
+    #
+    # for y in range(len(dict_array[x])):
+    #     if dict_array[x][y] == ',':
+    #         continue
+    #     if dict_array[x][y+1] == ",":
+    #         tuple(dict_array[x][y])
+    #
+    #     if dict_array[x][y+1] != ',':
+    #         tuple(dict_array[x][y], dict_array[x][y+1])
+    # print(dict_array[x])
