@@ -218,24 +218,62 @@ dict4 = {}
 
 
 
-
+count = 0
 for values in dict_array:
 
-    array = []
+
+    print(values)
+
+    print(len(values))
+
     x = 0
+    array = []
     while x < len(values):
+        print(array)
+
         print(values[x])
-        if values[x] != "," and values[x+1] == ",":
-            array.append(int(values[x]))
-            x += 1
+        if x == len(values) - 2:
+            string = values[x:x + 2]
+            print(string, 'stirng')
+            array.append(int(string))
+
+            x += 2
+            print(array)
+
+            dict4[count] = array
+            count += 1
             continue
+
+
+
+        if x == 0:
+            array.append(int(values[x]))
+            x+=1
+            continue
+
         if values[x] == ",":
             x += 1
             continue
-        if values[x] != "," and values[x+1] != ",":
-            array.append(int(values[x],values[x+1]))
-            x += 2
+
+
+
+        if values[x] != ',' and values[x-1] == ',' and values[x+1] == ',':
+            array.append(int(values[x]))
+            x += 1
             continue
+
+        if values[x] != ',' and values[x-1] == ',' and values[x+1] != ',':
+
+            string = values[x:x+2]
+            print(string,'stirng')
+            array.append(int(string))
+
+            x+=2
+            continue
+
+
+
+        x+=1
 
 
 print(dict_array)
@@ -249,3 +287,14 @@ print(dict_array)
     #     if dict_array[x][y+1] != ',':
     #         tuple(dict_array[x][y], dict_array[x][y+1])
     # print(dict_array[x])
+print(dict4)
+
+
+for values in dict4.values():
+    print(values)
+
+    for x in range(len(values)):
+        print(tuple_array[values[x]])
+
+
+print(tuple_array)
