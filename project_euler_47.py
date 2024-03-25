@@ -16,7 +16,7 @@ def is_prime(number):
 
 prime_array = []
 
-for x in range(1000,9999):
+for x in range(999,10000):
     if is_prime(x):
         prime_array.append(x)
 
@@ -33,6 +33,8 @@ cut_array = prime_array[0:10]
 
 new_array = []
 x = 0
+
+
 while True:
     string = str(prime_array[x])
     for z in range(len(prime_array)):
@@ -289,12 +291,34 @@ print(dict_array)
     # print(dict_array[x])
 print(dict4)
 
+big_array2 = []
 
 for values in dict4.values():
     print(values)
-
+    array = []
     for x in range(len(values)):
+        array.append(tuple_array[values[x]])
+        if x == len(values) - 1:
+            big_array2.append(array)
+
         print(tuple_array[values[x]])
 
 
 print(tuple_array)
+print(big_array2)
+
+
+for values in big_array2:
+    if len(values) == 3:
+        print(values)
+
+
+
+print(tuple_array)
+
+for numbers in prime_array:
+    string_numbers = str(numbers)
+    for digit in range(len(string_numbers)):
+
+        
+        print(string_numbers[digit])
