@@ -96,11 +96,25 @@ for values in dict1.values():
 
 print(dict2)
 
-
+array3 = []
 for values in dict2.values():
     print(values)
-    for x in range(len(values)):
-        print(values[0] - values[1])
+    array2 = []
+
+    for x in range(len(values) -1):
+        print((values[x+1] - values[x]), (values[x+2] - values[x+1]))
+
+        if (values[x+1] - values[x]) == (values[x+2] - values[x+1]) == values[x+3] - values[x+2]:
+
+            array2.append(values)
+            array3.append(array2)
+            print(array3)
+            print("yooo")
+            break
+        else:
+            break
+
+
 
 
 
@@ -118,5 +132,8 @@ for values in dict2.values():
 print(dict1)
 print(new_array)
 
+
+print('yo')
+print(array3)
 
 
