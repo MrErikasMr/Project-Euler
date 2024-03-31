@@ -12,15 +12,18 @@ def is_prime(number):
 
 
 
-dict1 = {}
+limit = 1000000
 
 prime_array = []
+x = 0
+while True:
 
-for x in range(1,1000):
+    if sum(prime_array) > limit:
+        break
 
-    print(is_prime(x))
     if is_prime(x):
         prime_array.append(x)
+    x += 1
 
 
 
@@ -28,37 +31,53 @@ total_sum = 0
 y_start = 0
 can_break = False
 
-while True:
-    if can_break:
-        print(dict1)
-        break
-    dict1 = {}
-
-    for y in range(y_start,len(prime_array)):
-        print(total_sum)
-        if total_sum >= 1000:
-            y_start += 1
-            total_sum = 0
-            break
-
-        total_sum += prime_array[y]
-
-        if is_prime(total_sum):
-            print('yes')
-            dict1[total_sum] = prime_array[:y + 1]
-            if total_sum > 1000:
-                can_break = True
-                break
 
 
 
-print(dict1)
 print(prime_array)
-print("yo")
 
 
-array1 = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157]
-array2 = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157]
-print(len(array2))
-if array1 == array2:
-    print('yes')
+prime_indices = []
+
+
+x = 0
+start_x = 0
+array_of_primes = []
+while True:
+    try:
+
+        total_sum += prime_array[x]
+        if is_prime(total_sum):
+            print(total_sum)
+            array_of_primes.append(prime_array[start_x: x + 1])
+            print(prime_array[start_x])
+
+        if total_sum >= limit:
+            start_x += 1
+            x = start_x
+            total_sum = 0
+            continue
+        x += 1
+    except IndexError:
+        break
+
+
+print(array_of_primes)
+
+longest_array = max(array_of_primes,key=len)
+
+print(max(array_of_primes,key=len))
+
+
+
+print(sum(longest_array))
+print(len(longest_array))
+# print(prime_array[:])
+# total_sum = 0
+# for x in range(len(prime_array[:14])):
+#     total_sum += prime_array[x]
+#     print(prime_array[x])
+#
+# print(total_sum)
+#
+# print(is_prime(total_sum))
